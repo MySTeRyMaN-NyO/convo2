@@ -662,7 +662,9 @@ document.getElementById("joinBtn").onclick = () => {
   }
 
   wsStatus.textContent = "connecting...";
-  socket = new WebSocket("ws://localhost:8080");
+  const protocol = window.location.protocol === "https:" ? "wss" : "ws";
+  const wsUrl = `${protocol}://${window.location.host}`;
+  socket = new WebSocket(wsUrl);
 
   socket.onopen = () => {
     console.log("[WS] connected");
