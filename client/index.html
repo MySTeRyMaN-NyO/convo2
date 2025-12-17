@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stage 3 Chat Demo</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="header">
+        <h1>Web Chat - Stage 3</h1>
+        <button id="runDemo" type="button">Run Demo (2 Tabs)</button>
+      </header>
+
+      <div id="joinPanel" class="chat-panel">
+        <div class="chat-header">
+          <span>Join Room</span>
+        </div>
+        <div class="chat-form">
+          <input id="nicknameInput" type="text" placeholder="Nickname" />
+          <input id="roomInput" type="text" placeholder="Room ID (e.g. lobby)" />
+          <button id="joinBtn" type="button" disabled>Join Room</button>
+        </div>
+        <div class="firebase-status">
+          <span id="firebaseStatus">Connecting to Firebase...</span>
+        </div>
+      </div>
+
+      <section id="chatPanel" class="chat-panel" style="display:none;">
+        <div class="chat-header">
+          <span>Chat</span>
+          <span id="wsStatus" class="status">disconnected</span>
+        </div>
+        <div id="messages" class="messages"></div>
+        <div class="chat-form">
+          <input id="messageInput" type="text" placeholder="Type a message..." />
+          <button id="sendBtn" type="button">Send</button>
+        </div>
+      </section>
+
+      <section id="mediaPanel" class="chat-panel" style="display:none;">
+        <div class="chat-header">
+          <span>Media Panel</span>
+          <span id="callStatus" class="call-status status-idle">idle</span>
+        </div>
+        <div class="media-body">
+          <div class="media-videos">
+            <video id="localVideo" class="local-video" autoplay muted playsinline></video>
+            <video id="remoteVideo" class="remote-video" autoplay playsinline></video>
+          </div>
+          <div class="media-controls">
+            <button id="enableMediaBtn" type="button">Enable Camera &amp; Mic</button>
+            <button id="toggleCameraBtn" type="button" disabled>Camera Off</button>
+            <button id="toggleMicBtn" type="button" disabled>Mic Muted</button>
+            <button id="startCallBtn" type="button">Start Call</button>
+            <button id="acceptCallBtn" type="button" disabled>Accept Call</button>
+            <button id="hangUpBtn" type="button" disabled>Hang Up</button>
+            <button id="shareScreenBtn" type="button" style="display:none;">Share Screen</button>
+          </div>
+          <div id="shareScreenLabel" class="share-label" style="display:none;">You are sharing your screen</div>
+          <div class="group-controls">
+            <span id="groupCountLabel" class="status">0 / 4 in call</span>
+            <button id="joinGroupCallBtn" type="button">Join Group Call</button>
+            <button id="leaveGroupCallBtn" type="button" disabled>Leave Group Call</button>
+          </div>
+          <div id="groupVideos" class="group-videos" style="display:none;"></div>
+        </div>
+      </section>
+
+      <section id="dmPanel" class="chat-panel" style="display:none;">
+        <div class="chat-header">
+          <span>Direct Calls</span>
+        </div>
+        <div class="dm-status">
+          <span id="dmStatusText" class="status">idle</span>
+          <span id="dmStatusDetail" class="dm-status-detail"></span>
+        </div>
+        <div id="dmIncoming" class="dm-incoming" style="display:none;">
+          <span>Incoming call from <strong id="dmIncomingName"></strong></span>
+          <button id="dmAcceptBtn" type="button">Accept</button>
+          <button id="dmRejectBtn" type="button">Reject</button>
+        </div>
+        <ul id="userList" class="user-list"></ul>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

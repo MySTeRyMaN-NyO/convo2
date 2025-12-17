@@ -1,0 +1,14 @@
+{
+  "name": "chat-mic-cam-messages",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Stage 1 - WebSocket chat demo",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "dev": "node server/server.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
